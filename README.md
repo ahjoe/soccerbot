@@ -1,2 +1,2 @@
 # soccerbot
-python tool for grep soccer score and team information
+A python tool for grep soccer team & score statistical information
