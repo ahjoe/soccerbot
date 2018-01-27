@@ -7,8 +7,4 @@ Example:
 
 Attributes:
 
-Todos:
-    TODO #1:
-    TODO #2:
-
 """

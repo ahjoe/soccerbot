@@ -7,14 +7,13 @@ Example:
 
 Attributes:
 
-Todos:
-    TODO #1:
-    TODO #2:
-
 """
 import unittest
 
-
+#
+# TODO:
+# FIXME:
+#
 class TestStringMethods(unittest.TestCase):
     def test_upper(self):
         self.assertEqual('foo'.upper(), 'FOO')
