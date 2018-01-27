@@ -3,12 +3,12 @@
 This test demostrates how to read json response through url path
 
 Example:
-    $ python urltest.py 'http://www.google.com'
+    $ python urltest.py
 
 Attributes:
 
-TODO:
-    * TODO #1
-    * TODO #2
+Todos:
+    TODO #1:
+    TODO #2:
 
 """
