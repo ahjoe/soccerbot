@@ -22,5 +22,11 @@ class TestStringMethods(unittest.TestCase):
         self.assertTrue('FOO'.isupper())
         self.assertFalse('foo'.isupper())
 
+    @unittest.skip("This test would be skipped")
+    def test_skip(self):
+        # do nothing
+        i = 1
+        self.assertTrue(i == 1)
+
 if __name__ == '__main__':
     unittest.main()
