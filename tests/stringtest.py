@@ -4,7 +4,7 @@ This test demostrates how to run unit test in vscode
 
 Example:
     $ python stringtest.py
-    
+
 Attributes:
 
 Todos:
