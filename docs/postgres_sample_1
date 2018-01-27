@@ -1,0 +1,36 @@
+-- CREATE TABLE
+CREATE TABLE public.fixture
+(
+    fixture_id integer NOT NULL,
+    data jsonb,
+    CONSTRAINT pk_fixture PRIMARY KEY (fixture_id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.fixture
+    OWNER to joseph;
+
+
+
+-- INSERT RECORD
+INSERT INTO 
+	fixture
+VALUES
+(1
+, '{"fixture":{"_links":{"self":{"href":"http://api.football-data.org/v1/fixtures/159084"},"competition":{"href":"http://api.football-data.org/v1/competitions/445"},"homeTeam":{"href":"http://api.football-data.org/v1/teams/72"},"awayTeam":{"href":"http://api.football-data.org/v1/teams/57"}},"date":"2018-01-30T19:45:00Z","status":"TIMED","matchday":25,"homeTeamName":"Swansea City FC","awayTeamName":"Arsenal FC","result":{"goalsHomeTeam":null,"goalsAwayTeam":null},"odds":null}}'
+);
+
+
+
+-- SELECT	
+SELECT
+	fixture_id
+	, data->'fixture'->'status' AS status
+	, data->'fixture'->'homeTeamName' AS home_team_name
+	, data->'fixture'->'awayTeamName' AS away_team_name
+FROM fixture 
+WHERE fixture_id = 159084;
+
