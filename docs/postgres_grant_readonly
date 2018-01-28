@@ -1,0 +1,4 @@
+GRANT CONNECT ON DATABASE soccerbot TO botsqlreader;
+GRANT USAGE ON SCHEMA public TO botsqlreader;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+   GRANT SELECT ON TABLES TO botsqlreader;

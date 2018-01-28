@@ -51,11 +51,11 @@ class TestUrlJson(unittest.TestCase):
         res = urllib.request.urlopen(req, timeout=5)
         data = res.read()
         encoding = res.info().get_content_charset('utf-8')
-        JSON = json.loads(data.decode(encoding))
+        JSONdata = json.loads(data.decode(encoding))
         logger.info(
-            json.dumps(JSON, indent=4, sort_keys=True)
+            json.dumps(JSONdata, indent=4, sort_keys=True)
         )
-        self.assertTrue(JSON != None)
+        self.assertTrue(JSONdata != None)
 
 
 if __name__ == '__main__':
