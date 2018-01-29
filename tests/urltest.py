@@ -47,6 +47,16 @@ logger.addHandler(fh)
 class TestUrlJson(unittest.TestCase):
     def test_readjson(self):
         url = 'http://api.football-data.org/v1/teams/5'
+        # =============
+        # proxy support
+        # ref: https://docs.python.org/3.5/howto/urllib2.html#proxies
+        #==============
+        ph = urllib.request.ProxyHandler(
+            proxies={'http': 'http://proxy.ha.org.hk:8080'}
+            )
+        opener = urllib.request.build_opener(ph)
+        urllib.request.install_opener(opener)
+        # =============
         req = urllib.request.Request(url=url, headers={}, method=None)
         res = urllib.request.urlopen(req, timeout=5)
         data = res.read()
