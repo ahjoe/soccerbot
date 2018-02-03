@@ -1,0 +1,48 @@
+CREATE SEQUENCE public.seq_json_id
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+ALTER SEQUENCE public.seq_json_id
+    OWNER TO joseph;
+
+GRANT SELECT, USAGE ON SEQUENCE public.seq_json_id TO botsqlreader;
+
+GRANT ALL ON SEQUENCE public.seq_json_id TO joseph;
+
+GRANT ALL ON SEQUENCE public.seq_json_id TO botsqlwriter;
+
+// 
+
+-- Table: public.jsons
+
+DROP TABLE public.jsons;
+
+CREATE TABLE public.jsons
+(
+    json_id integer NOT NULL DEFAULT nextval('seq_json_id'::regclass),
+    source character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    version character varying(10) COLLATE pg_catalog."default",
+    category character varying(64) COLLATE pg_catalog."default",
+    category_id integer,
+    sub_category character varying(64) COLLATE pg_catalog."default",
+    sub_category_id integer,
+	options character varying(255) COLLATE pg_catalog."default",
+    data jsonb,
+    CONSTRAINT pk_json_id PRIMARY KEY (json_id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.jsons
+    OWNER to joseph;
+
+GRANT SELECT ON TABLE public.jsons TO botsqlreader;
+
+GRANT INSERT, SELECT, UPDATE, DELETE, REFERENCES ON TABLE public.jsons TO botsqlwriter;
+
+GRANT ALL ON TABLE public.jsons TO joseph;
