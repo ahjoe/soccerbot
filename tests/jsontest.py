@@ -1,19 +1,19 @@
-""" Test for url request & response handlers via python v3 builtin modules
+""" Test JSON functions
 
-This test demostrates how to read json response through url path
+This test demostrates how to manuiplate json functions
 
 Example:
-    $ python urltest.py
+    $ python postgresqltest.py
 
 Attributes:
 
 """
-
 import os
 import unittest
 import logging
 import urllib.request
 import json
+
 
 # ====================
 # logger configuration
@@ -44,9 +44,9 @@ fh.setFormatter(formatter)
 logger.addHandler(fh)
 # =======================
 
-class TestUrlJson(unittest.TestCase):
-    def test_readjson(self):
-        url = 'http://api.football-data.org/v1/teams/5'
+class TestJSON(unittest.TestCase):
+    def test_json_get_attr_1(self):
+        url = 'http://api.football-data.org/v1/competitions/445/'
         req = urllib.request.Request(url=url, headers={}, method=None)
         res = urllib.request.urlopen(req, timeout=5)
         data = res.read()
@@ -55,8 +55,15 @@ class TestUrlJson(unittest.TestCase):
         logger.info(
             json.dumps(JSONdata, indent=4, sort_keys=True)
         )
-        self.assertTrue(JSONdata != None)
-
+        fixturesUrl = JSONdata['_links']['fixtures']['href']
+        logger.info(fixturesUrl)
+        teamsUrl = JSONdata['_links']['teams']['href']
+        logger.info(teamsUrl)
+        leagueTableUrl = JSONdata['_links']['leagueTable']['href']
+        logger.info(leagueTableUrl)
+        self.assertTrue(fixturesUrl)
+        self.assertTrue(teamsUrl)
+        self.assertTrue(leagueTableUrl)
 
 if __name__ == '__main__':
     unittest.main()

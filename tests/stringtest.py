@@ -37,7 +37,7 @@ ch.setFormatter(formatter)
 logger.addHandler(ch)
 
 # create file handler and append into logger
-LOG_RELATIVE_PATH = '/../log/soccerbot.log'
+LOG_RELATIVE_PATH = '/../log/soccerbot_test.log'
 fh = logging.FileHandler(
     os.path.dirname(os.path.realpath(__file__))
     + LOG_RELATIVE_PATH)
